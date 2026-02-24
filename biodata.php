@@ -21,8 +21,8 @@ $foto = "foto.jpg";
 $hobi = ["Menari","Bermain Game","Bermain voly"];
 // skill
 $skill = [
-"HTML"=>87,
-"CSS"=>75,
+"HTML"=>80,
+"CSS"=>70,
 "PHP"=>70
 ];
 // array (favorit)
@@ -277,4 +277,5 @@ aku adalah <?= $profesi_10_thn ?>, aku ingin menciptakan aplikasi yang bermanfaa
 </div>
 
 </body>
+
 </html>
