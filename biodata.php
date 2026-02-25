@@ -13,8 +13,8 @@ $gender = "Perempuan";
 $kewarganegaraan = "Indonesia";
 $wa = "0895322184674";
 $email = "cinvan0829@email.com";
-$motto = "Kunci untuk mewujudkan impian bukanlah dengan fokus pada kesuksesan tapi pada arti.
- Bahkan langkah kecil dan kemenangan kecil sepanjang perjalananmu bisa memberikan arti yang lebih hebat."";
+$motto= "Kunci untuk mewujudkan impian bukanlah dengan fokus pada kesuksesan tapi pada arti.
+Bahkan langkah kecil dan kemenangan kecil sepanjang perjalananmu bisa memberikan arti yang lebih hebat.";
 $foto = "foto.jpg";
 
 // array (menyimpan daftar hobi)
@@ -279,3 +279,4 @@ aku adalah <?= $profesi_10_thn ?>, aku ingin menciptakan aplikasi yang bermanfaa
 </body>
 
 </html>
+
