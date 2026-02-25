@@ -1,7 +1,8 @@
 <?php
+// ================== SISTEM HALAMAN ==================
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-// ================= DATA BIODATA =================
+// ================== DATA DIRI ==================
 $nama_lengkap = "Cindy Cahya Amika Pambudi";
 $nama_panggilan = "Cindy";
 $agama = "Islam";
@@ -9,14 +10,15 @@ $tempat_lahir = "Semarang";
 $tgl = 5;
 $bln = 2;
 $thn = 2010;
-$alamat = "Semarang";
+$alamat = "Jl. Taman Kelud Selatan No.19, RT 03 RW 05, Kel. Petompon, Kec. Gajahmungkur, Kota Semarang";
 $gender = "Perempuan";
 $kewarganegaraan = "Indonesia";
 $wa = "0895322184674";
-$email = "cinvan0829@email.com";
-$motto = "Langkah kecil hari ini adalah kesuksesan besar di masa depan.";
+$email = "cinvan0829@gmail.com";
+$motto = "Kunci untuk mewujudkan impian bukanlah dengan fokus pada kesuksesan tapi pada arti. Bahkan langkah kecil dan kemenangan kecil sepanjang perjalananmu bisa memberikan arti yang lebih hebat.";
 $foto = "foto.jpg";
 
+// ================== ARRAY DATA ==================
 $hobi = ["Menari", "Bermain Game", "Bermain Voli"];
 
 $skill = [
@@ -29,16 +31,21 @@ $makanan = ["Bakso", "Nasi Goreng", "Mie Ayam"];
 $minuman = ["Matcha", "Jus Alpukat", "Good Day Coklat"];
 
 $pendidikan = [
-    ["SD", "SDN Petompon 02 Semarang", "2016 - 2022"],
-    ["SMP", "SMP Negeri 10 Semarang", "2022 - 2025"],
-    ["SMK", "SMK Negeri 08 Semarang", "2025 - 2028"]
+    ["SD", "SDN Petompon 02 Semarang", 2016, 2022],
+    ["SMP", "SMP Negeri 10 Semarang", 2022, 2025],
+    ["SMK", "SMK Negeri 08 Semarang", 2025, 2028]
 ];
 
+// ================== PERHITUNGAN ==================
 $sekarang = date("Y");
 $umur = $sekarang - $thn;
+$tahun_10 = $sekarang + 10;
 $umur_10 = $umur + 10;
+$profesi_sekarang = "Pelajar";
+$profesi_10 = "Dokter Spesialis Anak";
+$rencana = "Bekerja di rumah sakit ibu & anak dan membantu banyak orang";
 
-// ================= JADWAL =================
+// ================== JADWAL ==================
 $namaSaya = "Cindy";
 
 $jadwal = [
@@ -61,11 +68,11 @@ $piket = [
 <!DOCTYPE html>
 <html>
 <head>
-<title>Project Cindy</title>
+<title>Project Biodata Cindy</title>
 <style>
 body{
     font-family: Arial;
-    background:#ffe6f0;
+    background:#3399ff;
 }
 .kotak{
     width:90%;
@@ -73,17 +80,25 @@ body{
     background:white;
     padding:25px;
     border-radius:12px;
-    margin-top:20px;
 }
 h2{
-    background:#ff66b2;
+    background:#3399ff;
     color:white;
     padding:10px;
     text-align:center;
     border-radius:8px;
 }
+.foto{
+    text-align:center;
+    margin-bottom:15px;
+}
 .bar{
+    display:flex;
     margin:6px 0;
+}
+.label{
+    width:220px;
+    font-weight:bold;
 }
 table{
     width:100%;
@@ -96,7 +111,7 @@ th,td{
     text-align:center;
 }
 th{
-    background:#ffb3d9;
+    background:#99ccff;
 }
 .btn{
     text-decoration:none;
@@ -116,36 +131,55 @@ th{
     background:yellow;
     font-weight:bold;
 }
+marquee{
+    background:#99ccff;
+    padding:8px;
+    margin-top:15px;
+    font-weight:bold;
+}
 </style>
-</head>
-<body>
 
+<script>
+function updateSkillValue(slider,id){
+    document.getElementById(id).innerText = slider.value + "%";
+}
+</script>
+</head>
+
+<body>
 <div class="kotak">
 
 <?php if($page == 1){ ?>
     <!-- ================= BIODATA LENGKAP ================= -->
     <h2>BIODATA SISWA</h2>
 
-    <div class="bar"><b>Nama Lengkap:</b> <?= $nama_lengkap ?></div>
-    <div class="bar"><b>Nama Panggilan:</b> <?= $nama_panggilan ?></div>
-    <div class="bar"><b>Agama:</b> <?= $agama ?></div>
-    <div class="bar"><b>TTL:</b> <?= $tempat_lahir ?>, <?= "$tgl/$bln/$thn" ?></div>
-    <div class="bar"><b>Umur:</b> <?= $umur ?> Tahun</div>
-    <div class="bar"><b>Alamat:</b> <?= $alamat ?></div>
-    <div class="bar"><b>Gender:</b> <?= $gender ?></div>
-    <div class="bar"><b>Kewarganegaraan:</b> <?= $kewarganegaraan ?></div>
-    <div class="bar"><b>No WA:</b> <?= $wa ?></div>
-    <div class="bar"><b>Email:</b> <?= $email ?></div>
+    <div class="foto">
+        <img src="<?= $foto ?>" width="180" style="border-radius:50%; border:4px solid #ff66b2;">
+    </div>
+
+    <div class="bar"><div class="label">Nama Lengkap</div>: <?= $nama_lengkap ?></div>
+    <div class="bar"><div class="label">Nama Panggilan</div>: <?= $nama_panggilan ?></div>
+    <div class="bar"><div class="label">Agama</div>: <?= $agama ?></div>
+    <div class="bar"><div class="label">TTL</div>: <?= $tempat_lahir ?>, <?= "$tgl/$bln/$thn" ?></div>
+    <div class="bar"><div class="label">Umur</div>: <?= $umur ?> Tahun</div>
+    <div class="bar"><div class="label">Alamat</div>: <?= $alamat ?></div>
+    <div class="bar"><div class="label">Gender</div>: <?= $gender ?></div>
+    <div class="bar"><div class="label">Kewarganegaraan</div>: <?= $kewarganegaraan ?></div>
+    <div class="bar"><div class="label">No WA</div>: <?= $wa ?></div>
+    <div class="bar"><div class="label">Email</div>: <?= $email ?></div>
 
     <h3>Hobi</h3>
-    <ul>
+    <ol>
         <?php foreach($hobi as $h){ echo "<li>$h</li>"; } ?>
-    </ul>
+    </ol>
 
     <h3>Skill</h3>
-    <ul>
-        <?php foreach($skill as $s => $nilai){ echo "<li>$s : $nilai%</li>"; } ?>
-    </ul>
+    <?php foreach($skill as $s => $n){ ?>
+        <?= $s ?><br>
+        <input type="range" min="0" max="100" value="<?= $n ?>" 
+        oninput="updateSkillValue(this,'val_<?= $s ?>')">
+        <span id="val_<?= $s ?>"><?= $n ?>%</span><br><br>
+    <?php } ?>
 
     <h3>Makanan Favorit</h3>
     <ul>
@@ -153,30 +187,34 @@ th{
     </ul>
 
     <h3>Minuman Favorit</h3>
-    <ul>
-        <?php foreach($minuman as $mn){ echo "<li>$mn</li>"; } ?>
-    </ul>
+    <ol type="A">
+        <?php foreach($minuman as $m){ echo "<li>$m</li>"; } ?>
+    </ol>
 
     <h3>Riwayat Pendidikan</h3>
     <table>
         <tr>
             <th>Tingkat</th>
-            <th>Sekolah</th>
-            <th>Tahun</th>
+            <th>Nama Sekolah</th>
+            <th>Tahun Masuk</th>
+            <th>Tahun Lulus</th>
         </tr>
-        <?php foreach($pendidikan as $p){
-            echo "<tr>
-                    <td>$p[0]</td>
-                    <td>$p[1]</td>
-                    <td>$p[2]</td>
-                  </tr>";
-        } ?>
+        <?php foreach($pendidikan as $p){ ?>
+        <tr>
+            <td><?= $p[0] ?></td>
+            <td><?= $p[1] ?></td>
+            <td><?= $p[2] ?></td>
+            <td><?= $p[3] ?></td>
+        </tr>
+        <?php } ?>
     </table>
 
     <h3>Harapan 10 Tahun Kedepan</h3>
-    <p>Umur saya 10 tahun lagi adalah <?= $umur_10 ?> tahun. 
-    Saya berharap menjadi orang sukses, membanggakan orang tua, 
-    dan memiliki karir yang baik di bidang teknologi.</p>
+    <p>
+    Hai namaku <?= $nama_panggilan ?>, saat ini tahun <?= $sekarang ?> aku adalah <?= $profesi_sekarang ?> 
+    yang berumur <?= $umur ?> tahun. 10 tahun lagi di tahun <?= $tahun_10 ?> di umur <?= $umur_10 ?> 
+    aku ingin menjadi <?= $profesi_10 ?> dan <?= $rencana ?>.
+    </p>
 
     <marquee><?= $motto ?></marquee>
 
@@ -187,6 +225,7 @@ th{
 <?php } elseif($page == 2){ ?>
     <!-- ================= JADWAL PELAJARAN ================= -->
     <h2>JADWAL PELAJARAN</h2>
+
     <table>
         <tr>
             <th>Jam</th>
@@ -215,6 +254,7 @@ th{
 <?php } elseif($page == 3){ ?>
     <!-- ================= JADWAL PIKET ================= -->
     <h2>JADWAL PIKET</h2>
+
     <table>
         <tr>
             <th>Hari</th>
